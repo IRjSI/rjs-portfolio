@@ -8,7 +8,6 @@ import Contact from "./components/Contact"
 // import { useGSAP } from "@gsap/react";
 // import gsap from "gsap";
 import Visitor from "./components/Visitor"
-import WaterDropGrid from "./components/WaterDropGrid"
 
 function App() {
 
