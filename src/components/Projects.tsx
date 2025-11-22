@@ -13,6 +13,21 @@ const Projects = () => {
         <p className="text-[#a1a1a1] font-medium">● Projects</p>
         <p className="text-green-500 bg-green-500/20 px-2 rounded-sm">• live</p>
       </div>
+
+      <ProjectCard link="https://reactpg.vercel.app/" img="/Screenshot 2025-11-22 185328.png" name="React Playground" description="An interactive playground to learn react via challenges" className="text-gray-400" stacks={
+        [
+          {stack: "Redis", logo: "https://img.icons8.com/?size=100&id=FMw01QDk8Qlu&format=png"},
+          {stack: "Babel", logo: "https://img.icons8.com/?size=100&id=OOrZQ7xdvxjX&format=png&color=ffffff"},
+          {stack: "Socket.io", invert: true, logo: "https://icon-icons.com/download-file?file=https%3A%2F%2Fimages.icon-icons.com%2F2389%2FPNG%2F512%2Fsocket_io_logo_icon_144874.png&id=144874&pack_or_individual=pack"},
+        ]
+      } />
+      <ProjectCard link="https://chronoss.vercel.app/" img="/Screenshot 2025-11-22 185826.png" name="Chronos" description="A project mananger with independent tasks management. Track and get your weekly report" className="text-gray-400" stacks={
+        [
+          {stack: "MongoDB", invert: true, logo: "https://img.icons8.com/fluent-systems-filled/200/FFFFFF/nextjs.png"},
+          {stack: "TailwindCSS", invert: true, logo: "https://img.icons8.com/m_rounded/512/FFFFFF/tailwind_css.png"},
+          {stack: "Vercel", invert: true, logo: "/vercel.svg"},
+        ]
+      } />
       <ProjectCard link="https://image-formater.vercel.app/" img="/image.png" name="Social Media Image Formator" description="A simple NextJS project for smartly converting images' format for socials" stacks={
         [
           {stack: "NextJS", logo: "https://img.icons8.com/fluent-systems-filled/200/FFFFFF/nextjs.png"},
@@ -65,6 +80,7 @@ const Projects = () => {
           {stack: "Vercel", logo: "/vercel.svg"},
         ]
       } />
+
       <p className="text-center">...</p>
     </motion.div>
   )
