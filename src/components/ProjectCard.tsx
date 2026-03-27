@@ -1,29 +1,35 @@
-const ProjectCard = ({ name, description, img, link, stacks, className }: { name: string, description: string, img: string, link: string, stacks: any, className?: string }) => {
-
+const ProjectCard = ({ name, description, img, link, stacks }: any) => {
   return (
-    <div className="rounded-md overflow-hidden shadow-md relative group mb-8 cursor-pointer">
-      <img src={img} className="w-full h-64 object-cover" alt="" />
+    <a
+      href={link}
+      target="_blank"
+      className="block border border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-600 transition group"
+    >
+      <img
+        src={img}
+        className="w-full h-48 object-cover group-hover:scale-[1.02] transition"
+      />
 
-      <a href={link} target="_blank" className="absolute inset-0 backdrop-blur-xs flex flex-col justify-between px-4 py-4 group-hover:opacity-0 opacity-100 transition-opacity duration-700">
+      <div className="p-4">
+        <h3 className="text-sm font-semibold mb-1">{name}</h3>
 
-        <div className="flex gap-4 flex-wrap bg-black/80 sm:bg-transparent p-2 rounded-xl">
-          {stacks.map((stack: any, index: any) => (
-            <div key={index} className="flex items-center gap-1">
-              <img src={stack.logo} alt="" className={`w-6 h-6 object-contain ${stack.invert && "invert"}`} />
-              <p className="text-white text-sm text-center">{stack.stack}</p>
-            </div>
+        <p className="text-xs text-gray-400 mb-3">
+          {description}
+        </p>
+
+        <div className="flex flex-wrap gap-1">
+          {stacks.map((s: any, i: number) => (
+            <span
+              key={i}
+              className="text-[10px] px-2 py-0.5 bg-[#1f1f1f] rounded"
+            >
+              {s.stack}
+            </span>
           ))}
         </div>
+      </div>
+    </a>
+  )
+}
 
-        <div className="flex-grow flex items-center justify-center">
-          <h1 className={`${className ? className : "text-white"} text-3xl font-semibold text-center`}>{name}</h1>
-        </div>
-
-        <p className={`${className ? className : "text-white"}  text-sm text-center`}>{description}</p>
-
-      </a>
-    </div>
-  );
-};
-
-export default ProjectCard;
+export default ProjectCard

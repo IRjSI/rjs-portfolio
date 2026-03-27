@@ -1,59 +1,53 @@
-import { GithubIcon, PlusCircle, TwitterIcon } from "lucide-react"
+import { GithubIcon, TwitterIcon } from "lucide-react"
 import { Link } from "react-router-dom"
 
-const Card = ({ title, status, heading, description, btn1, img }: any) => {
-  
-
+const Card = ({ title, status, heading, description, img }: any) => {
   return (
-    <div className="p-6 dark:bg-[#212121] border border-t-2 dark:border-[#484848] dark:border-t-[#636363] rounded-md shadow-sm">
-      <div className="flex flex-wrap justify-between items-center mb-6">
-        <p className="text-[#a1a1a1] font-medium">● {title}</p>
-        <p className="text-green-500 bg-green-500/20 px-2 py-1 rounded-sm text-sm mt-2 sm:mt-0">• {status}</p>
+    <div className="p-6 bg-[#121212] border border-neutral-800 rounded-xl hover:border-neutral-700 transition">
+      
+      {/* Top */}
+      <div className="flex justify-between items-center mb-6">
+        <p className="text-gray-500 text-xs">● {title}</p>
+        <p className="text-green-500 text-xs">{status}</p>
       </div>
 
       <div className="flex flex-col-reverse md:grid md:grid-cols-[2fr_1fr] gap-6 items-center">
+        
+        {/* Content */}
         <div>
-          <h1 className="text-3xl font-semibold mb-2">{heading}</h1>
-          <p className="text-[#a1a1a1] mb-4 text-sm sm:text-base">{description}</p>
+          <h1 className="text-2xl font-semibold mb-3 leading-tight">
+            {heading}
+          </h1>
 
-          <div className="flex flex-wrap gap-2">
-            <Link
-              to={"/contact"}
-              className="dark:bg-[#2b2b2b] border border-[#e4e4e7] dark:border-0 hover:bg-[#f4f4f5] px-3 py-2 rounded-sm font-light flex gap-2 items-center cursor-pointer dark:hover:bg-[#323232] text-sm"
-            >
-              <PlusCircle size={14} /> {btn1}
+          <p className="text-gray-400 text-sm mb-5">
+            {description}
+          </p>
+
+          {/* CTAs */}
+          <div className="flex gap-2 flex-wrap">
+            <Link to="/projects" className="px-3 py-1.5 bg-white text-black text-xs rounded">
+              View Work
             </Link>
-            <a
-              href="https://x.com/_RjS_0"
-              target="_blank"
-              className="dark:bg-[#2b2b2b] border border-[#e4e4e7] dark:border-0 hover:bg-[#f4f4f5] px-3 py-2 rounded-sm font-light flex gap-2 items-center cursor-pointer dark:hover:bg-[#323232]"
-            >
-              <TwitterIcon size={18} />
+
+            <Link to="/contact" className="px-3 py-1.5 bg-[#1f1f1f] text-xs rounded">
+              Contact
+            </Link>
+
+            <a href="https://github.com/IRjSI" target="_blank" className="p-1.5 bg-[#1f1f1f] rounded">
+              <GithubIcon size={14} />
             </a>
-            <a
-              href="https://github.com/IRjSI"
-              target="_blank"
-              className="dark:bg-[#2b2b2b] border border-[#e4e4e7] dark:border-0 hover:bg-[#f4f4f5] px-3 py-2 rounded-sm font-light flex gap-2 items-center cursor-pointer dark:hover:bg-[#323232]"
-            >
-              <GithubIcon size={18} />
-            </a>
-            <a
-              href="/resume_latest.pdf"
-              download
-              className="dark:bg-[#2b2b2b] border border-[#e4e4e7] dark:border-0 hover:bg-[#f4f4f5] px-3 py-2 rounded-sm font-light flex gap-2 items-center cursor-pointer dark:hover:bg-[#323232]"
-            >
-              Resume
+
+            <a href="https://x.com/_RjS_0" target="_blank" className="p-1.5 bg-[#1f1f1f] rounded">
+              <TwitterIcon size={14} />
             </a>
           </div>
         </div>
 
-        <div>
-          <img
-            src={img}
-            className="rounded-full w-32 h-32 md:w-36 md:h-36 object-cover border-2 mx-auto hover:scale-105 hover:shadow-lg transition-all duration-500"
-            alt="Profile"
-          />
-        </div>
+        {/* Image */}
+        <img
+          src={img}
+          className="rounded-lg w-24 h-24 object-cover mx-auto opacity-90"
+        />
       </div>
     </div>
   )
