@@ -1,120 +1,147 @@
-import { GithubIcon, TwitterIcon } from "lucide-react";
+import { GithubIcon, TwitterIcon } from "lucide-react"
 import { motion } from "framer-motion"
-import { useState } from "react";
+import { useState } from "react"
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay },
+})
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
+  const [form, setForm] = useState({ name: "", email: "", message: "" })
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState("")
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e: any) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setSuccess(false);
-
+  const handleSubmit = async (e: any) => {
+    e.preventDefault()
+    setLoading(true)
+    setError("")
+    setSuccess(false)
     try {
-      // Replace this URL with your email API endpoint (e.g., EmailJS, Formspree, Resend, etc.)
       const res = await fetch("https://formspree.io/f/xldnnbdz", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        }),
-      });
-
-      if (!res.ok) throw new Error("Failed to send message");
-      setSuccess(true);
-      setForm({ name: "", email: "", message: "" });
-    } catch (err) {
-      setError("Failed to send message. Please try again.");
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error()
+      setSuccess(true)
+      setForm({ name: "", email: "", message: "" })
+    } catch {
+      setError("Failed to send message.")
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="p-6 dark:bg-[#212121] border border-t-2 dark:border-[#484848] dark:border-t-[#636363] rounded-md shadow-sm"
-      >
-        <div className="flex justify-between items-center mb-8">
-          <p className="text-[#a1a1a1] font-medium">● Contact</p>
-          <p className="text-green-500 bg-green-500/20 px-2 rounded-sm">• Online</p>
-        </div>
-  
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div>
-            <label className="block text-sm text-[#a1a1a1] mb-1">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={(e) => handleChange(e)}
-              placeholder="Your name"
-              className="w-full px-4 py-2 rounded-md dark:bg-[#2c2c2c] placeholder-[#888] border dark:border-[#3a3a3a] focus:outline-none focus:ring-1 focus:ring-green-500"
-            />
+  }
+
+  return (
+    <div className="flex flex-col gap-2">
+
+      {/* Top row */}
+      <div className="grid grid-cols-2 gap-2">
+
+        {/* Form card */}
+        <motion.div
+          {...fadeUp(0.1)}
+          className="col-span-2 rounded-2xl border border-border bg-background p-6"
+        >
+          <div className="flex items-center justify-between mb-6">
+            <p className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium">
+              Contact
+            </p>
+            <span className="inline-flex items-center gap-1.5 text-[11px] text-green-500">
+              <span className="w-[5px] h-[5px] rounded-full bg-green-500 animate-pulse" />
+              Online
+            </span>
           </div>
-  
-          <div>
-            <label className="block text-sm text-[#a1a1a1] mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={(e) => handleChange(e)}
-              placeholder="you@example.com"
-              className="w-full px-4 py-2 rounded-md dark:bg-[#2c2c2c] placeholder-[#888] border dark:border-[#3a3a3a] focus:outline-none focus:ring-1 focus:ring-green-500"
-            />
-          </div>
-  
-          <div>
-            <label className="block text-sm text-[#a1a1a1] mb-1">Message</label>
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            <div className="grid grid-cols-2 gap-3">
+              <input
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Name"
+                required
+                className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-secondary text-[13px] outline-none focus:border-border/80 transition placeholder:text-muted-foreground/50"
+              />
+              <input
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="Email"
+                required
+                className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-secondary text-[13px] outline-none focus:border-border/80 transition placeholder:text-muted-foreground/50"
+              />
+            </div>
             <textarea
-              rows={4}
+              rows={5}
               name="message"
               value={form.message}
-              onChange={(e) => handleChange(e)}
-              placeholder="Your message"
-              className="w-full px-4 py-2 rounded-md dark:bg-[#2c2c2c] placeholder-[#888] border dark:border-[#3a3a3a] focus:outline-none focus:ring-1 focus:ring-green-500 resize-none"
+              onChange={handleChange}
+              placeholder="What's on your mind?"
+              required
+              className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-secondary text-[13px] outline-none focus:border-border/80 transition resize-none placeholder:text-muted-foreground/50"
             />
-          </div>
-  
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md transition duration-300"
-            disabled={loading}
-          >
-            Send Message
-          </button>
-
-          {success && (
-            <p className="text-green-500">Message sent successfully!</p>
-          )}
-
-          {error && (
-            <p className="text-red-500">Something went wrong</p>
-          )}
-        </form>
-
-        <div className="flex flex-col justify-center items-center h-full mt-4">
-            <p>Follow me:</p>
-            <div className="flex gap-4 mt-4 font-light">
-            <a href="https://x.com/_RjS_0" target="_blank" className="dark:bg-[#2b2b2b] border border-[#e4e4e7] dark:border-0 hover:bg-[#f4f4f5] px-2 py-2 rounded-sm font-light flex gap-2 items-center cursor-pointer dark:hover:bg-[#323232]"><TwitterIcon size={18} /></a>
-            <a href="https://github.com/IRjSI" target="_blank" className="dark:bg-[#2b2b2b] border border-[#e4e4e7] dark:border-0 hover:bg-[#f4f4f5] px-2 py-2 rounded-sm font-light flex gap-2 items-center cursor-pointer dark:hover:bg-[#323232]"><GithubIcon size={18} /></a>
+            <div className="flex items-center justify-between">
+              <div>
+                {success && <p className="text-[12px] text-green-500">Message sent.</p>}
+                {error && <p className="text-[12px] text-red-500">{error}</p>}
+              </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="px-5 py-2 rounded-xl bg-foreground text-background text-[13px] font-medium hover:opacity-80 transition disabled:opacity-50"
+              >
+                {loading ? "Sending..." : "Send →"}
+              </button>
             </div>
-        </div>
+          </form>
+        </motion.div>
+      </div>
+
+      {/* Socials row */}
+      <motion.div
+        {...fadeUp(0.2)}
+        className="grid grid-cols-2 gap-2"
+      >
+        <a
+          href="https://x.com/_RjS_0"
+          target="_blank"
+          className="flex items-center justify-between px-5 py-4 rounded-2xl border border-border bg-background hover:bg-secondary transition group"
+        >
+          <div className="flex items-center gap-3">
+            <TwitterIcon size={16} className="text-muted-foreground" />
+            <div>
+              <p className="text-[13px] font-medium">Twitter / X</p>
+              <p className="text-[11px] text-muted-foreground">@_RjS_0</p>
+            </div>
+          </div>
+          <span className="text-muted-foreground/40 group-hover:text-muted-foreground text-xs transition">↗</span>
+        </a>
+        
+        <a
+          href="https://github.com/IRjSI"
+          target="_blank"
+          className="flex items-center justify-between px-5 py-4 rounded-2xl border border-border bg-background hover:bg-secondary transition group"
+        >
+          <div className="flex items-center gap-3">
+            <GithubIcon size={16} className="text-muted-foreground" />
+            <div>
+              <p className="text-[13px] font-medium">GitHub</p>
+              <p className="text-[11px] text-muted-foreground">IRjSI</p>
+            </div>
+          </div>
+          <span className="text-muted-foreground/40 group-hover:text-muted-foreground text-xs transition">↗</span>
+        </a>
       </motion.div>
-    );
-  };
-  
-  export default Contact;
-  
+
+    </div>
+  )
+}
+
+export default Contact
