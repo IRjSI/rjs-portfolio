@@ -1,8 +1,13 @@
 import ProjectCard from "./ProjectCard"
 import { motion } from "framer-motion"
 
-const Projects = () => {
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay },
+})
 
+const Projects = () => {
   const featured = [
     {
       name: "React Playground",
@@ -52,39 +57,37 @@ const Projects = () => {
   ]
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="p-6 bg-[#121212] border border-neutral-800 rounded-xl"
-    >
+    <div className="flex flex-col gap-2">
+
       {/* Header */}
-      <div className="flex justify-between mb-6">
-        <p className="text-gray-500 text-xs">● Projects</p>
-        <p className="text-green-500 text-xs">Live</p>
-      </div>
+      <motion.div
+        {...fadeUp(0.1)}
+        className="flex items-center justify-between px-5 py-3.5 rounded-2xl border border-border bg-background"
+      >
+        <p className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium">Projects</p>
+        <span className="inline-flex items-center gap-1.5 text-[11px] text-green-500">
+          <span className="w-[5px] h-[5px] rounded-full bg-green-500 animate-pulse" />
+          Live
+        </span>
+      </motion.div>
 
       {/* Featured */}
-      <div className="mb-8">
-        <p className="text-xs text-gray-500 mb-3">FEATURED</p>
-
-        <div className="space-y-4">
-          {featured.map((p, i) => (
-            <ProjectCard key={i} {...p} />
-          ))}
+      <motion.div {...fadeUp(0.15)} className="rounded-2xl border border-border bg-background p-5">
+        <p className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium mb-4">Featured</p>
+        <div className="flex flex-col gap-3">
+          {featured.map((p, i) => <ProjectCard key={i} {...p} />)}
         </div>
-      </div>
+      </motion.div>
 
       {/* Others */}
-      <div>
-        <p className="text-xs text-gray-500 mb-3">OTHERS</p>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          {others.map((p, i) => (
-            <ProjectCard key={i} {...p} />
-          ))}
+      <motion.div {...fadeUp(0.2)} className="rounded-2xl border border-border bg-background p-5">
+        <p className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium mb-4">Others</p>
+        <div className="grid sm:grid-cols-2 gap-3">
+          {others.map((p, i) => <ProjectCard key={i} {...p} />)}
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+
+    </div>
   )
 }
 
