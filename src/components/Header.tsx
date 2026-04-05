@@ -1,4 +1,4 @@
-import { Contact, HomeIcon, Sparkle, PenIcon, PlusCircle } from "lucide-react"
+import { Contact, HomeIcon, Sparkle, PenIcon, PlusCircle, Book } from "lucide-react"
 import { ReactElement } from "react"
 import { ModeToggle } from "./mode-toggle"
 import { NavLink, Link } from "react-router-dom"
@@ -16,6 +16,7 @@ const Header = () => {
     { name: "Skills",   logo: <PenIcon size={14} />,   link: "/skills" },
     { name: "Projects", logo: <Sparkle size={14} />,   link: "/projects" },
     { name: "Contact",  logo: <Contact size={14} />,   link: "/contact" },
+    { name: "Blogs",  logo: <Book size={14} />,   link: "/blogs" },
   ]
 
   return (
