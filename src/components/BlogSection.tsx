@@ -15,7 +15,7 @@ const BlogSection = () => {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mt-8 p-6 bg-[#121212] border border-neutral-800 rounded-xl"
+      className="mt-8 p-6 border border-border bg-background rounded-xl"
     >
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
@@ -30,7 +30,7 @@ const BlogSection = () => {
             key={i}
             to={blog.link}
             target="_blank"
-            className="block p-4 border border-neutral-800 rounded hover:border-neutral-600 transition group"
+            className="block p-4 border border-border rounded hover:bg-secondary transition group"
           >
             <h3 className="text-sm font-medium group-hover:text-white transition">
               {blog.title}

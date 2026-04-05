@@ -12,7 +12,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="px-4 py-4 font-sans min-h-screen">
-        <div className="max-w-[600px] mx-auto flex flex-col gap-2">
+        <div className="max-w-[700px] mx-auto flex flex-col gap-2">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
