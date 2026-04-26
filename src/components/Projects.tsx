@@ -1,11 +1,5 @@
 import ProjectCard from "./ProjectCard"
-import { motion } from "framer-motion"
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay },
-})
+import RetroWindow from "./RetroWindow"
 
 const Projects = () => {
   const featured = [
@@ -13,7 +7,7 @@ const Projects = () => {
       name: "React Playground",
       description: "Interactive system to learn React through executable challenges. Includes runtime compilation, state tracking, and sandbox execution.",
       img: "/Screenshot 2025-11-22 185328.png",
-      link: "https://reactpg.vercel.app/",
+      link: "https://reactpg.xyz/",
       stacks: ["Redis", "Babel", "Socket.io"],
     },
     {
@@ -57,36 +51,35 @@ const Projects = () => {
   ]
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-6 py-4">
+      <RetroWindow title="Project_Database.sql" className="w-full">
+        <div className="flex flex-col gap-8">
+          <div>
+            <h2 className="pixel-header text-[12px] text-green-500 mb-6 border-b border-neutral-800 pb-2 flex items-center justify-between">
+              FEATURED_MODULES
+              <span className="text-[8px] animate-pulse">LIVE_STATUS: OK</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {featured.map((p, i) => <ProjectCard key={i} {...p} />)}
+            </div>
+          </div>
 
-      {/* Header */}
-      <motion.div
-        {...fadeUp(0.1)}
-        className="flex items-center justify-between px-5 py-3.5 rounded-2xl border border-border bg-background"
-      >
-        <p className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium">Projects</p>
-        <span className="inline-flex items-center gap-1.5 text-[11px] text-green-500">
-          <span className="w-[5px] h-[5px] rounded-full bg-green-500 animate-pulse" />
-          Live
-        </span>
-      </motion.div>
-
-      {/* Featured */}
-      <motion.div {...fadeUp(0.15)} className="rounded-2xl border border-border bg-background p-5">
-        <p className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium mb-4">Featured</p>
-        <div className="flex flex-col gap-3">
-          {featured.map((p, i) => <ProjectCard key={i} {...p} />)}
+          <div>
+            <h2 className="pixel-header text-[12px] text-blue-500 mb-6 border-b border-neutral-800 pb-2">
+              ARCHIVED_SUBSYSTEMS
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {others.map((p, i) => <ProjectCard key={i} {...p} />)}
+            </div>
+          </div>
         </div>
-      </motion.div>
+      </RetroWindow>
 
-      {/* Others */}
-      <motion.div {...fadeUp(0.2)} className="rounded-2xl border border-border bg-background p-5">
-        <p className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium mb-4">Others</p>
-        <div className="grid sm:grid-cols-2 gap-3">
-          {others.map((p, i) => <ProjectCard key={i} {...p} />)}
+      <div className="flex justify-center">
+        <div className="pixel-text text-[10px] text-neutral-600">
+          -- END OF LIST --
         </div>
-      </motion.div>
-
+      </div>
     </div>
   )
 }

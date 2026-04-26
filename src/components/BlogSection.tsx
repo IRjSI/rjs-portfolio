@@ -1,5 +1,4 @@
-import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+import RetroWindow from "./RetroWindow"
 
 const blogs = [
   {
@@ -12,41 +11,45 @@ const blogs = [
 
 const BlogSection = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="mt-8 p-6 border border-border bg-background rounded-xl"
-    >
-      {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <p className="text-gray-500 text-xs">● Writing</p>
-        <p className="text-xs text-gray-600">Notes & Systems</p>
-      </div>
+    <div className="flex flex-col gap-6 py-4">
+      <RetroWindow title="Archives_Reader.exe" className="w-full">
+        <div className="flex flex-col gap-4">
+          <h2 className="pixel-header text-[12px] text-yellow-500 mb-4 flex items-center justify-between">
+            STORED_CHUNKS
+            <span className="text-[8px] text-muted-foreground">ENCODING: UTF-8</span>
+          </h2>
 
-      {/* Blog List */}
-      <div className="space-y-4">
-        {blogs.map((blog, i) => (
-          <Link
-            key={i}
-            to={blog.link}
-            target="_blank"
-            className="block p-4 border border-border rounded hover:bg-secondary transition group"
-          >
-            <h3 className="text-sm font-medium group-hover:text-white transition">
-              {blog.title}
-            </h3>
+          <div className="grid gap-4">
+            {blogs.map((blog, i) => (
+              <a
+                key={i}
+                href={blog.link}
+                target="_blank"
+                className="block p-4 border-2 border-border bg-card hover:border-yellow-500/30 transition-all group shadow-[4px_4px_0_0_rgba(0,0,0,0.1)]"
+              >
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="pixel-header text-[10px] text-foreground group-hover:text-yellow-500 transition-colors">
+                    {blog.title}
+                  </h3>
+                  <span className="pixel-text text-muted group-hover:text-yellow-500"> {`>>>`}</span>
+                </div>
 
-            <p className="text-xs text-gray-400 mt-1">
-              {blog.description}
-            </p>
+                <p className="pixel-text text-sm text-muted-foreground mt-1">
+                  {blog.description}
+                </p>
 
-            <span className="text-[10px] text-gray-600 mt-2 inline-block group-hover:text-gray-400">
-              Read →
-            </span>
-          </Link>
-        ))}
-      </div>
-    </motion.div>
+                <div className="mt-4 flex items-center gap-2">
+                  <div className="h-1 w-1 bg-yellow-600" />
+                  <span className="pixel-text text-[10px] text-yellow-600 uppercase">
+                    ACCESS_LOG_ENTRY_{i + 1}
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </RetroWindow>
+    </div>
   )
 }
 

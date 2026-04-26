@@ -1,23 +1,23 @@
 const ProofStrip = () => {
   const items = [
-    { value: "5+", label: "Projects Built" },
-    { value: "Realtime", label: "Systems Experience" },
-    { value: "MERN", label: "Stack Focused" },
+    { value: "5+", label: "PROJECTS_COMPILED" },
+    { value: "REALTIME", label: "SYSTEMS_ACTIVE" },
+    { value: "MERN", label: "STACK_OPTIMIZED" },
   ]
 
   return (
-    <div className="grid grid-cols-3 gap-3 mt-4">
+    <div className="grid grid-cols-3 gap-2 mt-4">
       {items.map((item, i) => (
         <div
           key={i}
-          className="p-3 border border-neutral-800 rounded text-center"
+          className="p-3 border-2 border-border bg-card shadow-[4px_4px_0_0_rgba(0,0,0,0.1)] flex flex-col items-center justify-center"
         >
-          <p className="text-lg font-semibold">{item.value}</p>
-          <p className="text-xs text-gray-400">{item.label}</p>
+          <p className="pixel-header text-[10px] text-primary mb-1">{item.value}</p>
+          <p className="pixel-text text-[9px] text-muted-foreground uppercase tracking-tighter text-center">{item.label}</p>
         </div>
       ))}
     </div>
   )
 }
 
-export default ProofStrip
+export default ProofStrip

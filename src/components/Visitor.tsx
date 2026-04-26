@@ -33,8 +33,8 @@ export default function Visitor() {
       transition={{ duration: 0.4, delay: 0.6 }}
       className="flex justify-center py-2"
     >
-      <span className="text-[11px] text-muted-foreground/50 tabular-nums">
-        visitor <Link to={'https://flash-fictions.vercel.app/'} target='_blank'>#</Link>{views ?? '—'}
+      <span className="pixel-text text-[11px] text-muted-foreground tabular-nums">
+        VISITOR <Link to={'https://flaction.vercel.app/'} target='_blank' className="hover:text-primary">#</Link>{views ?? '—'}
       </span>
     </motion.div>
   )

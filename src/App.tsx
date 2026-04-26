@@ -11,8 +11,8 @@ import BlogSection from "./components/BlogSection"
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="px-4 py-4 font-sans min-h-screen">
-        <div className="max-w-[700px] mx-auto flex flex-col gap-2">
+      <div className="px-4 py-4 font-sans min-h-screen bg-background transition-colors duration-300">
+        <div className="max-w-[1000px] mx-auto flex flex-col gap-4">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />

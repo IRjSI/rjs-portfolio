@@ -1,12 +1,6 @@
 import { GithubIcon, TwitterIcon } from "lucide-react"
-import { motion } from "framer-motion"
 import { useState } from "react"
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay },
-})
+import RetroWindow from "./RetroWindow"
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" })
@@ -38,108 +32,117 @@ const Contact = () => {
   }
 
   return (
-    <div className="flex flex-col gap-2">
-
-      {/* Top row */}
-      <div className="grid grid-cols-2 gap-2">
-
-        {/* Form card */}
-        <motion.div
-          {...fadeUp(0.1)}
-          className="col-span-2 rounded-2xl border border-border bg-background p-6"
-        >
-          <div className="flex items-center justify-between mb-6">
-            <p className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium">
-              Contact
+    <div className="flex flex-col gap-6 py-4">
+      <RetroWindow title="Communication_Port.com" className="w-full">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 className="pixel-header text-[12px] text-primary mb-4">ESTABLISH_CONNECTION</h2>
+            <p className="pixel-text text-muted-foreground mb-6">
+              SEND A PACKET TO MY INBOX. I USUALLY RESPOND WITHIN 24 CYCLES.
             </p>
-            <span className="inline-flex items-center gap-1.5 text-[11px] text-green-500">
-              <span className="w-[5px] h-[5px] rounded-full bg-green-500 animate-pulse" />
-              Online
-            </span>
-          </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-            <div className="grid grid-cols-2 gap-3">
-              <input
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Name"
-                required
-                className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-secondary text-[13px] outline-none focus:border-border/80 transition placeholder:text-muted-foreground/50"
-              />
-              <input
-                name="email"
-                type="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Email"
-                required
-                className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-secondary text-[13px] outline-none focus:border-border/80 transition placeholder:text-muted-foreground/50"
-              />
-            </div>
-            <textarea
-              rows={5}
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="What's on your mind?"
-              required
-              className="w-full px-3.5 py-2.5 rounded-xl border border-border bg-secondary text-[13px] outline-none focus:border-border/80 transition resize-none placeholder:text-muted-foreground/50"
-            />
-            <div className="flex items-center justify-between">
-              <div>
-                {success && <p className="text-[12px] text-green-500">Message sent.</p>}
-                {error && <p className="text-[12px] text-red-500">{error}</p>}
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <label className="pixel-text text-[10px] text-muted-foreground">USER_NAME</label>
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="IDENTIFY YOURSELF"
+                  required
+                  className="w-full px-3 py-2 border-2 border-border bg-background pixel-text text-sm text-primary outline-none focus:border-primary/50 transition placeholder:text-muted/20"
+                />
               </div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="px-5 py-2 rounded-xl bg-foreground text-background text-[13px] font-medium hover:opacity-80 transition disabled:opacity-50"
-              >
-                {loading ? "Sending..." : "Send →"}
-              </button>
-            </div>
-          </form>
-        </motion.div>
-      </div>
 
-      {/* Socials row */}
-      <motion.div
-        {...fadeUp(0.2)}
-        className="grid grid-cols-2 gap-2"
-      >
-        <a
-          href="https://x.com/_RjS_0"
-          target="_blank"
-          className="flex items-center justify-between px-5 py-4 rounded-2xl border border-border bg-background hover:bg-secondary transition group"
-        >
-          <div className="flex items-center gap-3">
-            <TwitterIcon size={16} className="text-muted-foreground" />
+              <div className="flex flex-col gap-2">
+                <label className="pixel-text text-[10px] text-muted-foreground">EMAIL_ADDRESS</label>
+                <input
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="RETURN_ADDRESS@HOST.COM"
+                  required
+                  className="w-full px-3 py-2 border-2 border-border bg-background pixel-text text-sm text-blue-500 outline-none focus:border-blue-500/50 transition placeholder:text-muted/20"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="pixel-text text-[10px] text-muted-foreground">MESSAGE_PAYLOAD</label>
+                <textarea
+                  rows={4}
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="ENTER ENCRYPTED MESSAGE..."
+                  required
+                  className="w-full px-3 py-2 border-2 border-border bg-background pixel-text text-sm text-foreground outline-none focus:border-foreground/20 transition resize-none placeholder:text-muted/20"
+                />
+              </div>
+
+              <div className="flex items-center justify-between mt-2">
+                <div className="pixel-text text-xs">
+                  {success && <span className="text-green-500 animate-pulse">[DELIVERED]</span>}
+                  {error && <span className="text-red-500">[ERROR: {error}]</span>}
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="pixel-header text-[10px] px-6 py-2 bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-50 transition-all shadow-[4px_4px_0_0_rgba(0,0,0,0.1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+                >
+                  {loading ? "TRANSMITTING..." : "SEND_DATA"}
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div className="flex flex-col gap-8">
             <div>
-              <p className="text-[13px] font-medium">Twitter / X</p>
-              <p className="text-[11px] text-muted-foreground">@_RjS_0</p>
+              <h2 className="pixel-header text-[12px] text-blue-500 mb-4">EXTERNAL_LINKS</h2>
+              <div className="flex flex-col gap-3">
+                <a
+                  href="https://x.com/_RjS_0"
+                  target="_blank"
+                  className="flex items-center justify-between p-3 border-2 border-border bg-card hover:border-blue-500/30 transition group"
+                >
+                  <div className="flex items-center gap-3">
+                    <TwitterIcon size={18} className="text-muted-foreground group-hover:text-blue-400" />
+                    <div>
+                      <p className="pixel-text text-sm text-foreground">TWITTER_X</p>
+                      <p className="pixel-text text-[10px] text-muted-foreground">@_RJS_0</p>
+                    </div>
+                  </div>
+                  <span className="pixel-text text-muted group-hover:text-blue-500"> {`>>>`}</span>
+                </a>
+
+                <a
+                  href="https://github.com/IRjSI"
+                  target="_blank"
+                  className="flex items-center justify-between p-3 border-2 border-border bg-card hover:border-foreground/20 transition group"
+                >
+                  <div className="flex items-center gap-3">
+                    <GithubIcon size={18} className="text-muted-foreground group-hover:text-foreground" />
+                    <div>
+                      <p className="pixel-text text-sm text-foreground">GITHUB_REPO</p>
+                      <p className="pixel-text text-[10px] text-muted-foreground">IRJSI</p>
+                    </div>
+                  </div>
+                  <span className="pixel-text text-muted group-hover:text-foreground"> {`>>>`}</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-auto bg-muted p-4 border border-border rounded relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-1 bg-primary/20 text-[8px] pixel-text text-primary">SECURE_CHANNEL</div>
+              <p className="pixel-text text-[10px] text-muted-foreground leading-tight">
+                ENCRYPTION: AES-256-GCM<br />
+                PROTOCOL: HTTPS/TLS 1.3<br />
+                STATUS: LISTENING_ON_PORT_443
+              </p>
             </div>
           </div>
-          <span className="text-muted-foreground/40 group-hover:text-muted-foreground text-xs transition">↗</span>
-        </a>
-        
-        <a
-          href="https://github.com/IRjSI"
-          target="_blank"
-          className="flex items-center justify-between px-5 py-4 rounded-2xl border border-border bg-background hover:bg-secondary transition group"
-        >
-          <div className="flex items-center gap-3">
-            <GithubIcon size={16} className="text-muted-foreground" />
-            <div>
-              <p className="text-[13px] font-medium">GitHub</p>
-              <p className="text-[11px] text-muted-foreground">IRjSI</p>
-            </div>
-          </div>
-          <span className="text-muted-foreground/40 group-hover:text-muted-foreground text-xs transition">↗</span>
-        </a>
-      </motion.div>
-
+        </div>
+      </RetroWindow>
     </div>
   )
 }
