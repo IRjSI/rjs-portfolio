@@ -8,11 +8,13 @@ import Contact from "./components/Contact"
 import Visitor from "./components/Visitor"
 import BlogSection from "./components/BlogSection"
 import AudioPlayer from "./components/AudioPlayer"
+import GlitchQuote from "./components/GlitchQuote"
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="px-4 py-4 font-sans min-h-screen bg-background transition-colors duration-300">
+        <GlitchQuote />
         <div className="max-w-[1000px] mx-auto flex flex-col gap-4">
           <Header />
           <Routes>
