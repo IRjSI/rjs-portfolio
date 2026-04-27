@@ -7,6 +7,7 @@ import Skills from "./components/Skills"
 import Contact from "./components/Contact"
 import Visitor from "./components/Visitor"
 import BlogSection from "./components/BlogSection"
+import AudioPlayer from "./components/AudioPlayer"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/blogs" element={<BlogSection />} />
           </Routes>
           <Visitor />
+          <AudioPlayer />
         </div>
       </div>
     </ThemeProvider>

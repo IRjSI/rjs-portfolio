@@ -6,7 +6,7 @@ const Projects = () => {
     {
       name: "React Playground",
       description: "Interactive system to learn React through executable challenges. Includes runtime compilation, state tracking, and sandbox execution.",
-      img: "/Screenshot 2025-11-22 185328.png",
+      img: "/Screenshot 2026-03-25 182638.png",
       link: "https://reactpg.xyz/",
       stacks: ["Redis", "Babel", "Socket.io"],
     },
