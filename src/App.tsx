@@ -9,13 +9,17 @@ import Visitor from "./components/Visitor"
 import BlogSection from "./components/BlogSection"
 import AudioPlayer from "./components/AudioPlayer"
 import GlitchQuote from "./components/GlitchQuote"
+import { useKonamiCode } from "./lib/useKonamiCode"
+import SystemOverride from "./components/SystemOverride"
 
 function App() {
+  const isMatrixMode = useKonamiCode();
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="px-4 py-4 font-sans min-h-screen bg-background transition-colors duration-300">
+      <div className={`px-4 py-4 font-sans min-h-screen bg-background transition-colors duration-300 ${isMatrixMode ? 'hue-rotate-270 contrast-150 saturate-200' : ''}`}>
+        <SystemOverride isActive={isMatrixMode} />
         <GlitchQuote />
-        <div className="max-w-[1000px] mx-auto flex flex-col gap-4">
+        <div className={`max-w-[1000px] mx-auto flex flex-col gap-4 ${isMatrixMode ? 'opacity-80' : ''}`}>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
