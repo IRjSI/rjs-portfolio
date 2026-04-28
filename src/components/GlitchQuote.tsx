@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 const quotes = [
+  "UP UP DOWN DOWN",
   "THE UNEXAMINED LIFE IS NOT WORTH LIVING",
   "THERE IS NO SPOON",
   "अहं ब्रह्मास्मि",

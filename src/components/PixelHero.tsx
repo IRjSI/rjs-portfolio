@@ -52,11 +52,12 @@ const PixelHero = () => {
           <div className="flex flex-col gap-4">
             <p className="pixel-text text-foreground text-lg leading-relaxed">
               I'M A <span className="text-primary font-bold underline decoration-primary/30 underline-offset-4">21-YEAR-OLD DEVELOPER</span> WHO BUILDS FAST, POLISHED PRODUCTS.
-              SPECIALIZING IN <span className="text-green-500">REACT</span>, <span className="text-blue-500">NODE.JS</span> AND <span className="text-purple-500">DISTRIBUTED SYSTEMS</span>.
+              SPECIALIZING IN <span className="text-blue-500">REACT</span>, <span className="text-green-500">NODE.JS</span> AND <span className="text-violet-500">DISTRIBUTED SYSTEMS</span>.
             </p>
             <p className="pixel-text text-foreground text-lg leading-relaxed uppercase">
               I also write <a href="https://flaction.vercel.app" target="_blank" className="text-yellow-500 underline">flash fiction</a> and make <a href="https://youtube.com/@IRjSI" target="_blank" className="text-orange-500 underline">music</a>
             </p>
+
             <div className="flex gap-4">
               <a href="https://github.com/IRjSI" target="_blank" className="p-2 bg-muted border border-border rounded hover:border-primary/50 transition group">
                 <GithubIcon size={18} className="text-muted-foreground group-hover:text-primary" />

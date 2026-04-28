@@ -7,6 +7,10 @@ const Contact = () => {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState("")
+  
+  const [hardMode, setHardMode] = useState(false)
+  const [puzzleAnswer, setPuzzleAnswer] = useState("")
+  const isPuzzleSolved = puzzleAnswer.trim() === "2"
 
   const handleChange = (e: any) => setForm({ ...form, [e.target.name]: e.target.value })
 
@@ -80,6 +84,43 @@ const Contact = () => {
                 />
               </div>
 
+              <div className="flex items-center gap-2 mt-2">
+                <input 
+                  type="checkbox" 
+                  id="hardModeToggle" 
+                  checked={hardMode} 
+                  onChange={(e) => setHardMode(e.target.checked)} 
+                  className="accent-primary cursor-pointer w-3 h-3" 
+                />
+                <label htmlFor="hardModeToggle" className="pixel-text text-[10px] text-primary cursor-pointer hover:underline">
+                  ENABLE HARD_MODE [CHALLENGE]
+                </label>
+              </div>
+
+              {hardMode && (
+                <div className="p-3 border border-red-500/50 bg-red-500/5 mb-2 rounded">
+                  <p className="pixel-text text-[10px] text-red-400 mb-2 animate-pulse">SYSTEM LOCKED. VERIFY HUMAN INTELLIGENCE.</p>
+                  <pre className="text-[10px] text-muted-foreground bg-black/60 p-2 rounded mb-3 overflow-x-auto border border-border/50">
+                    {`const [count, setCount] = useState(0);\n\nsetCount(c => c + 1);\nsetCount(c => c + 1);\n\n// What is the value of 'count' on the next render?`}
+                  </pre>
+                  <div className="flex items-center gap-2">
+                    <span className="pixel-text text-[10px] text-foreground">ANSWER:</span>
+                    <input
+                      type="text"
+                      value={puzzleAnswer}
+                      onChange={(e) => setPuzzleAnswer(e.target.value)}
+                      className="w-16 px-2 py-1 bg-background border border-border text-xs pixel-text outline-none focus:border-red-500 transition-colors"
+                      placeholder="?"
+                    />
+                    {puzzleAnswer && (isPuzzleSolved ? (
+                      <span className="text-green-500 pixel-text text-[10px] drop-shadow-[0_0_5px_rgba(0,255,0,0.8)]">ACCESS_GRANTED</span>
+                    ) : (
+                      <span className="text-red-500 pixel-text text-[10px]">INCORRECT</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="flex items-center justify-between mt-2">
                 <div className="pixel-text text-xs">
                   {success && <span className="text-green-500 animate-pulse">[DELIVERED]</span>}
@@ -87,10 +128,13 @@ const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="pixel-header text-[10px] px-6 py-2 bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-50 transition-all shadow-[4px_4px_0_0_rgba(0,0,0,0.1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+                  disabled={loading || (hardMode && !isPuzzleSolved)}
+                  className={`pixel-header text-[10px] px-6 py-2 transition-all shadow-[4px_4px_0_0_rgba(0,0,0,0.1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
+                    ${(hardMode && !isPuzzleSolved) 
+                      ? "bg-muted text-muted-foreground cursor-not-allowed border border-border" 
+                      : "bg-primary text-primary-foreground hover:opacity-90"}`}
                 >
-                  {loading ? "TRANSMITTING..." : "SEND_DATA"}
+                  {loading ? "TRANSMITTING..." : (hardMode && !isPuzzleSolved) ? "LOCKED" : "SEND_DATA"}
                 </button>
               </div>
             </form>
