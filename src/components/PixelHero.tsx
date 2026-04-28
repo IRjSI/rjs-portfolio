@@ -12,10 +12,8 @@ const PixelHero = () => {
 
   return (
     <div className="flex flex-col gap-6 py-8">
-      {/* CRT Monitor Section */}
       <div className="crt-monitor aspect-video max-w-4xl mx-auto w-full relative">
         <div className="crt-screen w-full h-full relative overflow-hidden">
-          {/* Background Landscape */}
           <img
             src={tw_bann}
             alt="Background"
@@ -49,9 +47,7 @@ const PixelHero = () => {
         </div>
       </div>
 
-      {/* Retro Window Section for Projects */}
       <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto w-full">
-        {/* About Window */}
         <RetroWindow title="Bio.exe" className="h-full">
           <div className="flex flex-col gap-4">
             <p className="pixel-text text-foreground text-lg leading-relaxed">
@@ -68,7 +64,7 @@ const PixelHero = () => {
               <a href="https://x.com/_RjS_0" target="_blank" className="p-2 bg-muted border border-border rounded hover:border-primary/50 transition group">
                 <TwitterIcon size={18} className="text-muted-foreground group-hover:text-primary" />
               </a>
-              {/* resume download */}
+
               <a href="/resume.pdf" download target="_blank" className="px-2 py-1 bg-muted border border-border rounded hover:border-primary/50 transition group">
                 <p className="pixel-text text-foreground text-lg leading-relaxed uppercase">Resume</p>
               </a>
@@ -76,7 +72,6 @@ const PixelHero = () => {
           </div>
         </RetroWindow>
 
-        {/* Projects Window */}
         <RetroWindow title="Projects.bat" className="h-full">
           <div className="flex flex-col gap-2">
             {projects.map((p, i) => (

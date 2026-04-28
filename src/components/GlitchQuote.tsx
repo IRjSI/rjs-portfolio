@@ -12,6 +12,9 @@ const quotes = [
   "A dream... It's something you do for yourself, not for others",
   "Those Who Can’t Abandon Anything Can’t Change Anything",
   "everyone is a slave to something",
+  "Be, don't try to become",
+  "Life begins where fear ends",
+  "",
 ];
 
 const GlitchQuote: React.FC = () => {
@@ -59,7 +62,7 @@ const GlitchQuote: React.FC = () => {
             <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
             <div className="text-[8px] uppercase tracking-[0.3em] font-bold text-green-500">executing_thoughts</div>
           </div>
-          {/* Ghost text for glitch effect */}
+
           <div className="absolute top-0 left-0 text-red-500/10 glitch-ghost-1 matrix-quote-glitch uppercase">{displayText}</div>
           <div className="absolute top-0 left-0 text-blue-500/10 glitch-ghost-2 matrix-quote-glitch uppercase">{displayText}</div>
 

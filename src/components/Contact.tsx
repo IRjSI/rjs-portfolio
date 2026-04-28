@@ -50,7 +50,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="IDENTIFY YOURSELF"
                   required
-                  className="w-full px-3 py-2 border-2 border-border bg-background pixel-text text-sm text-primary outline-none focus:border-primary/50 transition placeholder:text-muted/20"
+                  className="placeholder:text-secondary w-full px-3 py-2 border-2 border-border bg-background pixel-text text-sm text-primary outline-none focus:border-primary/50 transition placeholder:text-muted/20"
                 />
               </div>
 
@@ -63,7 +63,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="RETURN_ADDRESS@HOST.COM"
                   required
-                  className="w-full px-3 py-2 border-2 border-border bg-background pixel-text text-sm text-blue-500 outline-none focus:border-blue-500/50 transition placeholder:text-muted/20"
+                  className="placeholder:text-secondary w-full px-3 py-2 border-2 border-border bg-background pixel-text text-sm text-blue-500 outline-none focus:border-blue-500/50 transition placeholder:text-muted/20"
                 />
               </div>
 
@@ -76,7 +76,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="ENTER ENCRYPTED MESSAGE..."
                   required
-                  className="w-full px-3 py-2 border-2 border-border bg-background pixel-text text-sm text-foreground outline-none focus:border-foreground/20 transition resize-none placeholder:text-muted/20"
+                  className="placeholder:text-secondary w-full px-3 py-2 border-2 border-border bg-background pixel-text text-sm text-foreground outline-none focus:border-foreground/20 transition resize-none placeholder:text-muted/20"
                 />
               </div>
 
