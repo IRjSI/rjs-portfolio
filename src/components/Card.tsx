@@ -34,8 +34,8 @@ const Card = ({ status, description, img }: any) => {
             className="rounded-2xl border border-border bg-background p-6 flex flex-col justify-between min-h-[220px]"
           >
             <h1 className="font-syne font-extrabold text-[40px] leading-[.9] tracking-[-2px]">
-              Raju<br />J<br />
-              <span className="text-muted-foreground">Suthar.</span>
+              R<br />j<br />
+              <span className="text-muted-foreground">S</span>
             </h1>
             <span className="inline-flex items-center gap-2 border border-border rounded-full px-3 py-1 text-[11.5px] text-muted-foreground w-fit mt-4">
               <span className="w-[5px] h-[5px] rounded-full bg-green-500 animate-pulse" />

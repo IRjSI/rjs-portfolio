@@ -40,7 +40,7 @@ const PixelHero = () => {
 
           <div className="absolute bottom-4 right-4 z-20">
             <div className="bg-black/60 backdrop-blur-sm border border-white/20 p-3 rounded pixel-text text-white text-[10px] max-w-[200px]">
-              <p className="pixel-header text-[8px] mb-2 text-yellow-400">RAJU J SUTHAR</p>
+              <p className="pixel-header text-[8px] mb-2 text-yellow-400">RjS</p>
               <p className="opacity-80">Full-stack engineer building real-time systems.</p>
             </div>
           </div>
