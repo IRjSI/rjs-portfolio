@@ -15,7 +15,8 @@ const quotes = [
   "everyone is a slave to something",
   "Be, don't try to become",
   "Life begins where fear ends",
-  "",
+  "connected to everything attached to nothing",
+
 ];
 
 const GlitchQuote: React.FC = () => {
