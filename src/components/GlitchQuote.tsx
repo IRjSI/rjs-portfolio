@@ -16,7 +16,12 @@ const quotes = [
   "Be, don't try to become",
   "Life begins where fear ends",
   "connected to everything attached to nothing",
-
+  "staying upwind",
+  "dance with curiosity",
+  "The best lack all conviction, while the worst are full of passionate intensity",
+  "Do you want to do great work, or not?",
+  "be a medium for ideas to express themself",
+  "If you're not failing occasionally, you're probably being too conservative",
 ];
 
 const GlitchQuote: React.FC = () => {
